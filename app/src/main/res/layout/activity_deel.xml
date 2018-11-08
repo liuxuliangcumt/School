@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ruipu.school.activity.DeelActivity">
+
+    <include layout="@layout/activitytitle_common" />
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_ok"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="80dp"
+            android:background="@drawable/bg_round_radiobutton"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="通过" />
+
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_round_radiobutton"
+            android:button="@null"
+            android:gravity="center"
+            android:text="驳回" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="top"
+        android:hint="请输入驳回原因"
+        android:theme="@style/PageLineContentTextView" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        style="@style/normalBtn"
+        android:text="提交" />
+</LinearLayout>

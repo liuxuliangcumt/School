@@ -36,18 +36,45 @@ public class StudentsAdapter extends MyBaseAdapter<Student> {
 
         holder.tv_name.setText(data.get(position).getName());
         holder.tv_number.setText(data.get(position).getNumber());
+        // 4图书馆 5 宿管处  6 财务处  7 卡务中心
+        Student student = data.get(position);
         switch (from) {
             case 5:
+                if (student.getDormState() == 0 || student.getDormState() == null) {
+                    holder.tv_state.setText("未处理");
+                } else if (student.getDormState() == 1) {
+                    holder.tv_state.setText("钥匙已归还，宿舍打扫干净");
+                } else {
+                    holder.tv_state.setText("钥匙未归还或宿舍未打扫干净");
+                }
 
                 break;
             case 6:
-
+                if (student.getFinanceState() == 0 || student.getFinanceState() == null) {
+                    holder.tv_state.setText("未处理");
+                } else if (student.getFinanceState() == 1) {
+                    holder.tv_state.setText("无欠款");
+                } else {
+                    holder.tv_state.setText("待缴清");
+                }
                 break;
             case 7:
-
+                if (student.getCardState() == 0 || student.getCardState() == null) {
+                    holder.tv_state.setText("未处理");
+                } else if (student.getCardState() == 1) {
+                    holder.tv_state.setText("卡里无余额");
+                } else {
+                    holder.tv_state.setText("卡里有余额");
+                }
                 break;
             case 4:
-
+                if (student.getLibraryState() == 0 || student.getLibraryState() == null) {
+                    holder.tv_state.setText("未处理");
+                } else if (student.getLibraryState() == 1) {
+                    holder.tv_state.setText("无待还书");
+                } else {
+                    holder.tv_state.setText("有待还书");
+                }
                 break;
         }
         return convertView;

@@ -2,10 +2,11 @@ package com.ruipu.school.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ruipu.school.R;
-import com.ruipu.school.adapter.StudentAdapter;
 import com.ruipu.school.adapter.StudentsAdapter;
 import com.ruipu.school.beans.Student;
 
@@ -41,7 +42,13 @@ public class StudentsActivity extends BaseActivity {
         data = new ArrayList<>();
         adapter = new StudentsAdapter(this, data, from);
         lv_student.setAdapter(adapter);
-        getData();
+        setTitleName("学生列表");
+        lv_student.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DeelActivity_.intent(StudentsActivity.this).student(data.get(position)).from(from).start();
+            }
+        });
     }
 
     private void getData() {
@@ -51,13 +58,25 @@ public class StudentsActivity extends BaseActivity {
             @Override
             public void done(List<Student> list, BmobException e) {
                 if (e == null) {
+                    data.clear();
                     data.addAll(list);
                     adapter.notifyDataSetChanged();
+                    for (int i = 0; i < data.size(); i++) {
+
+                        Log.e("aaa", data.get(i).toString());
+                    }
                 } else {
 
                 }
                 Log.e("aaa", "TeachAffairsActivity  list  " + list.size() + "  e:" + e);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getData();
+
     }
 }

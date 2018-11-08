@@ -200,7 +200,7 @@ public class MainActivity extends BaseActivity {
 
                         break;
                     case 3:
-                        et_account.setText("jiaowu");
+                        et_account.setText("fudaoyuan");
 
                         break;
                     case 4:
@@ -210,6 +210,12 @@ public class MainActivity extends BaseActivity {
                     case 5:
                         et_account.setText("dorm");
 
+                        break;
+                    case 6:
+                        et_account.setText("finance");
+                        break;
+                    case 7:
+                        et_account.setText("card");
                         break;
                 }
 

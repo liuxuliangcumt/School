@@ -1,12 +1,14 @@
 package com.ruipu.school.beans;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobObject;
 
 /**
  * Created by ruipu on 2018/11/8.
  */
 
-public class Student extends BmobObject {
+public class Student extends BmobObject implements Serializable {
 
     // 钥匙 宿舍卫生   宿管
     // 财务 未缴清款项
@@ -20,10 +22,10 @@ public class Student extends BmobObject {
     private String finance;//财务
     private String library;
     private String card;
-    private Integer cardState;
-    private Integer dormState;
-    private Integer libraryState;
-    private Integer financeState;
+    private Integer cardState = 0;
+    private Integer dormState = 0;
+    private Integer libraryState = 0;
+    private Integer financeState = 0;
 
     public String getNumber() {
         return number;
@@ -119,5 +121,22 @@ public class Student extends BmobObject {
     }
 
     public Student() {
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "number='" + number + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", dorm='" + dorm + '\'' +
+                ", finance='" + finance + '\'' +
+                ", library='" + library + '\'' +
+                ", card='" + card + '\'' +
+                ", cardState=" + cardState +
+                ", dormState=" + dormState +
+                ", libraryState=" + libraryState +
+                ", financeState=" + financeState +
+                '}';
     }
 }
