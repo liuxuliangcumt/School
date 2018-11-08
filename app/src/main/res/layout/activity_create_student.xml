@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ruipu.school.activity.CreateStudentActivity">
+
+    <include layout="@layout/activitytitle_common" />
+
+    <LinearLayout
+        android:id="@+id/ll_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="30dp"
+            android:text="姓名：" />
+
+        <com.ruipu.school.view.ClearEditText
+            android:id="@+id/et_account"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:background="@drawable/bg_login_clear"
+            android:drawablePadding="15dp"
+            android:hint="请输入姓名"
+            android:lines="1"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="30dp"
+            android:text="密码：" />
+
+        <com.ruipu.school.view.ClearEditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:background="@drawable/bg_login_clear"
+            android:drawablePadding="15dp"
+            android:hint="输入密码"
+            android:lines="1"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="123456"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="30dp"
+            android:text="学号：" />
+
+        <com.ruipu.school.view.ClearEditText
+            android:id="@+id/et_number"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:background="@drawable/bg_login_clear"
+            android:drawablePadding="15dp"
+            android:hint="请输入学号"
+            android:inputType="number"
+            android:lines="1"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="123456"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_create"
+        style="@style/normalBtn"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:text="创建" />
+</LinearLayout>

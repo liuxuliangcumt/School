@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.ruipu.school.activity.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_role"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="角色名:"
+            android:textSize="18sp" />
+
+        <com.ruipu.school.view.ClearEditText
+            android:id="@+id/et_account"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_login_clear"
+            android:drawablePadding="15dp"
+            android:lines="1"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="jiaowu"
+            android:textSize="16sp" />
+        <!--
+        android:hint="请输入手机号或身份证号"-->
+        <com.ruipu.school.view.PassWordEditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_login_clear"
+            android:drawablePadding="15dp"
+            android:hint="输入密码"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="123456"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/normalBtn"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:text="登录" />
+
+    <Button
+        android:id="@+id/btn_choserole"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:text="选择登录角色"
+        android:theme="@style/normalBtn" />
+</LinearLayout>
