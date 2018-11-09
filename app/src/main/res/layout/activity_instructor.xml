@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ruipu.school.activity.InstructorActivity">
+
+    <include layout="@layout/activitytitle_common" />
+
+    <EditText
+        android:id="@+id/et_title"
+        style="@style/PageLineTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入标题"
+        android:padding="20dp" />
+
+    <EditText
+        android:id="@+id/et_content"
+        style="@style/PageLineContentTextView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:hint="请输入内容"
+        android:padding="20dp" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        style="@style/normalBtn"
+        android:text="提交" />
+</LinearLayout>

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.ruipu.school.R;
 import com.ruipu.school.adapter.RoleAdapter;
+import com.ruipu.school.beans.Student;
 import com.ruipu.school.beans.UserRole;
 import com.ruipu.school.util.MyToastUtils;
 import com.ruipu.school.util.SystemInfoUtils;
@@ -113,26 +114,55 @@ public class MainActivity extends BaseActivity {
             MyToastUtils.showToast("请输入密码");
             return;
         }
-        BmobQuery<UserRole> query = new BmobQuery<>();
 
-        query.addWhereEqualTo("name", name);
-        query.addWhereEqualTo("passWord", password);
-        query.addWhereEqualTo("role", loginRole);
-        Log.e("aaa", name + "   list");
+        if (loginRole == 8) {
+            BmobQuery<Student> query = new BmobQuery<>();
 
-        query.findObjects(new FindListener<UserRole>() {
-            @Override
-            public void done(List<UserRole> list, BmobException e) {
-                if (e == null) {
-                    if (list.size() != 0) {
-                        MyToastUtils.showToast("登录成功");
-                        loginTo();
+            query.addWhereEqualTo("name", name);
+            query.addWhereEqualTo("password", password);
+            Log.e("aaa", name + "   list");
+
+            query.findObjects(new FindListener<Student>() {
+                @Override
+                public void done(List<Student> list, BmobException e) {
+                    Log.e("aaa","Student list:"+list.size()+"  e: "+e);
+                    if (e == null) {
+                        if (list.size() != 0) {
+                            MyToastUtils.showToast("登录成功");
+                            loginTo();
+                        } else {
+                            MyToastUtils.showToast("账户或密码不正确");
+
+                        }
+                    } else {
+                        MyToastUtils.showToast("账户或密码不正确");
                     }
-                } else {
-                    MyToastUtils.showToast("账户或密码不正确");
                 }
-            }
-        });
+            });
+        } else {
+            BmobQuery<UserRole> query = new BmobQuery<>();
+
+            query.addWhereEqualTo("name", name);
+            query.addWhereEqualTo("passWord", password);
+            query.addWhereEqualTo("role", loginRole);
+            Log.e("aaa", name + "   list");
+            query.findObjects(new FindListener<UserRole>() {
+                @Override
+                public void done(List<UserRole> list, BmobException e) {
+                    if (e == null) {
+                        if (list.size() != 0) {
+                            MyToastUtils.showToast("登录成功");
+                            loginTo();
+                        } else {
+                            MyToastUtils.showToast("账户或密码不正确");
+
+                        }
+                    } else {
+                        MyToastUtils.showToast("账户或密码不正确");
+                    }
+                }
+            });
+        }
 
 
     }
@@ -147,7 +177,7 @@ public class MainActivity extends BaseActivity {
                 break;
 
             case 3:
-
+                InstructorActivity_.intent(this).start();
                 break;
             case 4:
                 StudentsActivity_.intent(this).from(4).start();
@@ -165,7 +195,7 @@ public class MainActivity extends BaseActivity {
 
                 break;
             case 8:
-
+                StudentMianActivity_.intent(this).start();
                 break;
 
         }
@@ -216,6 +246,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 7:
                         et_account.setText("card");
+                        break;
+                    case 8:
+                        et_account.setText("student");
                         break;
                 }
 

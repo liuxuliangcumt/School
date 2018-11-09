@@ -36,7 +36,9 @@
         <activity android:name=".activity.CreateStudentActivity_" />
         <activity android:name=".activity.DormActivity" />
         <activity android:name=".activity.StudentsActivity_" />
-        <activity android:name=".activity.DeelActivity_"></activity>
+        <activity android:name=".activity.DeelActivity_" />
+        <activity android:name=".activity.InstructorActivity_" />
+        <activity android:name=".activity.StudentMianActivity_"></activity>
     </application>
 
 </manifest>
