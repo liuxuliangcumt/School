@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ruipu.school.activity.NotificationDetailActivity">
+
+    <include layout="@layout/activitytitle_common" />
+
+    <TextView
+        android:id="@+id/tv_titles"
+        style="@style/PageLineTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="阿斯顿发十多个" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/PageLineContentTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:text="dfasdas分公司的黄金分割和" />
+</LinearLayout>

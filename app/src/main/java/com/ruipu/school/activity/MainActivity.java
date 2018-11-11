@@ -125,7 +125,7 @@ public class MainActivity extends BaseActivity {
             query.findObjects(new FindListener<Student>() {
                 @Override
                 public void done(List<Student> list, BmobException e) {
-                    Log.e("aaa","Student list:"+list.size()+"  e: "+e);
+                    Log.e("aaa", "Student list:" + list.size() + "  e: " + e);
                     if (e == null) {
                         if (list.size() != 0) {
                             MyToastUtils.showToast("登录成功");
@@ -169,6 +169,7 @@ public class MainActivity extends BaseActivity {
 
     private void loginTo() {
         switch (loginRole) {
+
             case 1:
                 ManagerActivity_.intent(this).start();
                 break;
@@ -195,10 +196,11 @@ public class MainActivity extends BaseActivity {
 
                 break;
             case 8:
-                StudentMianActivity_.intent(this).start();
+                StudentMianActivity_.intent(this).studentName(et_account.getText().toString().trim()).start();
                 break;
 
         }
+        finish();
     }
 
     private Integer loginRole = 0;
@@ -225,6 +227,10 @@ public class MainActivity extends BaseActivity {
                 tv_role.setText(data.get(position).getPassWord());
                 dialog.dismiss();
                 switch (loginRole) {
+                    case 1:
+                        et_account.setText("admin");
+                        break;
+
                     case 2:
                         et_account.setText("jiaowu");
 
