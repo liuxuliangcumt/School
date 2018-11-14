@@ -117,11 +117,9 @@ public class MainActivity extends BaseActivity {
 
         if (loginRole == 8) {
             BmobQuery<Student> query = new BmobQuery<>();
-
             query.addWhereEqualTo("name", name);
             query.addWhereEqualTo("password", password);
             Log.e("aaa", name + "   list");
-
             query.findObjects(new FindListener<Student>() {
                 @Override
                 public void done(List<Student> list, BmobException e) {
@@ -129,7 +127,10 @@ public class MainActivity extends BaseActivity {
                     if (e == null) {
                         if (list.size() != 0) {
                             MyToastUtils.showToast("登录成功");
-                            loginTo();
+                            // loginTo();
+                            StudentMianActivity_.intent(MainActivity.this).
+                                    studentName(list.get(0).getName()).start();
+
                         } else {
                             MyToastUtils.showToast("账户或密码不正确");
 
@@ -152,7 +153,7 @@ public class MainActivity extends BaseActivity {
                     if (e == null) {
                         if (list.size() != 0) {
                             MyToastUtils.showToast("登录成功");
-                            loginTo();
+                            loginTo(list.get(0));
                         } else {
                             MyToastUtils.showToast("账户或密码不正确");
 
@@ -167,7 +168,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    private void loginTo() {
+    private void loginTo(UserRole userRole) {
         switch (loginRole) {
 
             case 1:
@@ -178,7 +179,8 @@ public class MainActivity extends BaseActivity {
                 break;
 
             case 3:
-                InstructorActivity_.intent(this).start();
+                InstructorStudentActivity_.intent(this).role(userRole).start();
+               // InstructorActivity_.intent(this).start();
                 break;
             case 4:
                 StudentsActivity_.intent(this).from(4).start();
@@ -196,7 +198,6 @@ public class MainActivity extends BaseActivity {
 
                 break;
             case 8:
-                StudentMianActivity_.intent(this).studentName(et_account.getText().toString().trim()).start();
                 break;
 
         }

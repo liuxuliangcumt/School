@@ -39,7 +39,8 @@
         <activity android:name=".activity.DeelActivity_" />
         <activity android:name=".activity.InstructorActivity_" />
         <activity android:name=".activity.StudentMianActivity_" />
-        <activity android:name=".activity.NotificationDetailActivity_"></activity>
+        <activity android:name=".activity.NotificationDetailActivity_" />
+        <activity android:name=".activity.InstructorStudentActivity_"></activity>
     </application>
 
 </manifest>

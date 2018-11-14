@@ -15,9 +15,17 @@
         android:orientation="vertical">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="上海建桥学院毕业离校管理系统"
+            android:textSize="20sp" />
+
+        <TextView
             android:id="@+id/tv_role"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="角色名:"
             android:textSize="18sp" />

@@ -4,7 +4,6 @@ import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobRole;
 
 /**
- * Created by ruipu on 2018/11/7.
  */
 
 public class UserRole extends BmobObject {
@@ -13,12 +12,20 @@ public class UserRole extends BmobObject {
     private Integer role;//  1 是管理员  2 教务处  3辅导员 4图书馆 5 宿管处  6 财务处  7 卡务中心 8 学生
     private Boolean isAble;
     private String name;
+    private Integer instructorGrade;
+
+    public Integer getInstructorGrade() {
+        return instructorGrade;
+    }
+
+    public void setInstructorGrade(Integer instructorGrade) {
+        this.instructorGrade = instructorGrade;
+    }
 
     public UserRole(String name, Integer role) {
         this.role = role;
         this.name = name;
     }
-
 
 
     public String getName() {

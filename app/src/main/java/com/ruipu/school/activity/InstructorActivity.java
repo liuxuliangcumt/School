@@ -6,10 +6,12 @@ import android.widget.EditText;
 
 import com.ruipu.school.R;
 import com.ruipu.school.beans.NotificationMessage;
+import com.ruipu.school.beans.UserRole;
 import com.ruipu.school.util.MyToastUtils;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
 import cn.bmob.v3.exception.BmobException;
@@ -21,6 +23,8 @@ public class InstructorActivity extends BaseActivity {
 
     @ViewById
     EditText et_title, et_content;
+    @Extra
+    UserRole role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

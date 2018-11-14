@@ -38,6 +38,7 @@ public class StudentMianActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_mian);
+        setTitleName(studentName);
         titleData = new ArrayList<>();
         titleData.add("通知");
         titleData.add("待办事项");

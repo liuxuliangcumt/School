@@ -10,9 +10,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.ruipu.school.R;
-import com.ruipu.school.adapter.StudentsAdapter;
+import com.ruipu.school.adapter.InstructorStudentAdapter;
 import com.ruipu.school.beans.Student;
+import com.ruipu.school.beans.UserRole;
 
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
@@ -24,34 +26,36 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
-/**
- * 学生列表 查看状态
- */
 @EActivity
-public class StudentsActivity extends BaseActivity {
+public class InstructorStudentActivity extends BaseActivity {
 
     @Extra
-    int from;// 4图书馆 5 宿管处  6 财务处  7 卡务中心
+    UserRole role;
+
     @ViewById
     ListView lv_student;
 
     private List<Student> data;
-    StudentsAdapter adapter;
+    InstructorStudentAdapter adapter;
     @ViewById
     EditText et_search;
 
+    //InstructorActivity_.intent(this).start();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_students);
+        setContentView(R.layout.activity_instructor_student);
         data = new ArrayList<>();
-        adapter = new StudentsAdapter(this, data, from);
+        adapter = new InstructorStudentAdapter(this, data);
         lv_student.setAdapter(adapter);
         setTitleName("学生列表");
+        setRightName("发布通知");
         lv_student.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DeelActivity_.intent(StudentsActivity.this).student(data.get(position)).from(from).start();
+                /*StudentMianActivity_.intent(InstructorStudentActivity.this).
+                        studentName(data.get(position).getName()).start();*/
+
             }
         });
         et_search.addTextChangedListener(new TextWatcher() {
@@ -100,6 +104,7 @@ public class StudentsActivity extends BaseActivity {
 
     private void getData() {
         BmobQuery<Student> query = new BmobQuery<>();
+        query.addWhereEqualTo("grade", role.getInstructorGrade());
         query.findObjects(new FindListener<Student>() {
             @Override
             public void done(List<Student> list, BmobException e) {
@@ -124,5 +129,10 @@ public class StudentsActivity extends BaseActivity {
         super.onResume();
         getData();
 
+    }
+
+    @Click(R.id.tv_right)
+    void onVIew() {
+        InstructorActivity_.intent(this).role(role).start();
     }
 }

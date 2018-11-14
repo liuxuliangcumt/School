@@ -26,6 +26,15 @@ public class Student extends BmobObject implements Serializable {
     private Integer dormState = 0;
     private Integer libraryState = 0;
     private Integer financeState = 0;
+    private Integer grade;
+
+    public Integer getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Integer grade) {
+        this.grade = grade;
+    }
 
     public String getNumber() {
         return number;
