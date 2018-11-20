@@ -8,6 +8,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.ruipu.school.R;
+import com.ruipu.school.beans.Student;
 import com.ruipu.school.fragment.NotificationFragment;
 import com.ruipu.school.fragment.NotificationFragment_;
 import com.ruipu.school.fragment.ToDoFragment;
@@ -31,14 +32,16 @@ public class StudentMianActivity extends BaseActivity {
     private List<String> titleData;
     NotificationFragment fragment;
     ToDoFragment fragment2;
+
+
     @Extra
-    String studentName;
+    Student student;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_mian);
-        setTitleName(studentName);
+        setTitleName(student.getName());
         titleData = new ArrayList<>();
         titleData.add("通知");
         titleData.add("待办事项");
@@ -74,6 +77,7 @@ public class StudentMianActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        fragment2.setStudentName(studentName);
+        fragment2.setStudentName(student.getName());
+        fragment.setGrade(student.getGrade());
     }
 }

@@ -11,6 +11,15 @@ import cn.bmob.v3.BmobObject;
 public class NotificationMessage extends BmobObject implements Serializable {
 
     private String title, content;
+    private int grade;
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
 
     public NotificationMessage(String title, String content) {
         this.title = title;

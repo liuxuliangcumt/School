@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -39,6 +40,8 @@ public class InstructorStudentActivity extends BaseActivity {
     InstructorStudentAdapter adapter;
     @ViewById
     EditText et_search;
+    @ViewById
+    CheckBox cb_number;
 
     //InstructorActivity_.intent(this).start();
     @Override
@@ -82,7 +85,11 @@ public class InstructorStudentActivity extends BaseActivity {
 
     private void searchStudent(String search) {
         BmobQuery<Student> query = new BmobQuery<>();
-        query.addWhereEqualTo("name", search);
+        if (cb_number.isChecked()) {
+            query.addWhereEqualTo("number", search);
+        } else {
+            query.addWhereEqualTo("name", search);
+        }
         query.findObjects(new FindListener<Student>() {
             @Override
             public void done(List<Student> list, BmobException e) {
@@ -104,7 +111,7 @@ public class InstructorStudentActivity extends BaseActivity {
 
     private void getData() {
         BmobQuery<Student> query = new BmobQuery<>();
-        query.addWhereEqualTo("grade", role.getInstructorGrade());
+        query.addWhereEqualTo("grade", role.getGrade());
         query.findObjects(new FindListener<Student>() {
             @Override
             public void done(List<Student> list, BmobException e) {

@@ -37,18 +37,19 @@ public class NotificationFragment extends Fragment {
         data = new ArrayList<>();
         adapter = new NotificationAdapter(getContext(), data);
         lv_notice.setAdapter(adapter);
-       lv_notice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           @Override
-           public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-               NotificationDetailActivity_.intent(getContext()).notificationMessage(data.get(i)).start();
+        lv_notice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                NotificationDetailActivity_.intent(getContext()).notificationMessage(data.get(i)).start();
 
-           }
-       });
-        getData();
+            }
+        });
+
     }
 
-    private void getData() {
+    private void getData(int grade) {
         BmobQuery<NotificationMessage> query = new BmobQuery<>();
+        query.addWhereEqualTo("grade", grade);
         query.findObjects(new FindListener<NotificationMessage>() {
             @Override
             public void done(List<NotificationMessage> list, BmobException e) {
@@ -59,5 +60,9 @@ public class NotificationFragment extends Fragment {
             }
         });
 
+    }
+
+    public void setGrade(int grade) {
+        getData(grade);
     }
 }

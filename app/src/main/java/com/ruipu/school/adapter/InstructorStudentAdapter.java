@@ -26,22 +26,22 @@ public class InstructorStudentAdapter extends MyBaseAdapter<Student> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = View.inflate(context, R.layout.item_listview_student, null);
+            convertView = View.inflate(context, R.layout.item_listview_student_state, null);
             holder = new ViewHolder();
-            holder.iv_delete = convertView.findViewById(R.id.iv_delete);
+            holder.tv_number = convertView.findViewById(R.id.tv_number);
             holder.name = convertView.findViewById(R.id.tv_name);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
 
         }
+        holder.tv_number.setText(data.get(position).getNumber());
         holder.name.setText(data.get(position).getName());
-        holder.iv_delete.setVisibility(View.GONE);
         return convertView;
     }
 
     private class ViewHolder {
-        TextView name;
+        TextView name, tv_number;
         ImageView iv_delete;
 
     }

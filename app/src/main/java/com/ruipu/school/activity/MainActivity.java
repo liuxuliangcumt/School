@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -44,6 +46,9 @@ public class MainActivity extends BaseActivity {
     @ViewById
     TextView tv_role;
 
+    @ViewById
+    CheckBox cb_student;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +80,16 @@ public class MainActivity extends BaseActivity {
         data.add(new UserRole("财务处", 6));
         data.add(new UserRole("卡务中心", 7));
         data.add(new UserRole("学生", 8));
+        cb_student.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    loginRole = 8;
+                } else {
+                    loginRole = 0;
+                }
+            }
+        });
 
     }
 
@@ -87,14 +102,16 @@ public class MainActivity extends BaseActivity {
     void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.btn_choserole:
-                showChoseRoleDailog();
+                // showChoseRoleDailog();
                 break;
             case R.id.btn_login:
-                if (loginRole == 0) {
+               /* if (loginRole == 0) {
                     showChoseRoleDailog();
                 } else {
                     goLogin();
-                }
+                }*/
+                goLogin();
+
                 break;
         }
 
@@ -129,7 +146,7 @@ public class MainActivity extends BaseActivity {
                             MyToastUtils.showToast("登录成功");
                             // loginTo();
                             StudentMianActivity_.intent(MainActivity.this).
-                                    studentName(list.get(0).getName()).start();
+                                    student(list.get(0)).start();
 
                         } else {
                             MyToastUtils.showToast("账户或密码不正确");
@@ -145,7 +162,7 @@ public class MainActivity extends BaseActivity {
 
             query.addWhereEqualTo("name", name);
             query.addWhereEqualTo("passWord", password);
-            query.addWhereEqualTo("role", loginRole);
+            // query.addWhereEqualTo("role", loginRole);
             Log.e("aaa", name + "   list");
             query.findObjects(new FindListener<UserRole>() {
                 @Override
@@ -169,7 +186,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void loginTo(UserRole userRole) {
-        switch (loginRole) {
+        switch (userRole.getRole()) {
 
             case 1:
                 ManagerActivity_.intent(this).start();
@@ -180,7 +197,7 @@ public class MainActivity extends BaseActivity {
 
             case 3:
                 InstructorStudentActivity_.intent(this).role(userRole).start();
-               // InstructorActivity_.intent(this).start();
+                // InstructorActivity_.intent(this).start();
                 break;
             case 4:
                 StudentsActivity_.intent(this).from(4).start();
@@ -201,7 +218,7 @@ public class MainActivity extends BaseActivity {
                 break;
 
         }
-        finish();
+
     }
 
     private Integer loginRole = 0;

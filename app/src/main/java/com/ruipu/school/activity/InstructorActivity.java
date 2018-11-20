@@ -50,6 +50,7 @@ public class InstructorActivity extends BaseActivity {
             return;
         }
         NotificationMessage message = new NotificationMessage(title, content);
+        message.setGrade(role.getGrade());
         message.save(new SaveListener<String>() {
             @Override
             public void done(String s, BmobException e) {
